@@ -1,4 +1,4 @@
-package ru.job4j.calculate.condition;
+package ru.job4j.condition;
 
 
 public class Point {
