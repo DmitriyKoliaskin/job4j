@@ -1,6 +1,17 @@
 package ru.job4j.Loop;
 
+/**
+ * Чудо шахматная доска построенная в псевдографике.
+ * @author Dmitriy Koliaskin (Hipf02@yandex.ru)
+ * @version 0.1
+ * @since $Id$
+ */
+
 public class Board {
+    /**
+     * @param width ширина
+     * @param height высота
+     */
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
