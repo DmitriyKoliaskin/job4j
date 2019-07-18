@@ -1,4 +1,4 @@
-package ru.job4j.Loop;
+package ru.job4j.loop;
 
 /**
  * В этой программе демонстрируется сохранение таблчиных
@@ -14,14 +14,15 @@ public class CompoundInterest {
         final int NYEARS = 10;
 
         double[] interestRate = new double[NRATES];
-        for (int j = 0; j < interestRate.length; j++)
+        for (int j = 0; j < interestRate.length; j++) {
             interestRate[j] = (STASTRATE + j) / 100.0;
-
+        }
         double[][] balances = new double[NYEARS][NRATES];
-        for (int j = 0; j < balances[0].length; j++)
+        for (int j = 0; j < balances[0].length; j++) {
             balances[0][j] = 10000;
+        }
         for (int i = 1; i < balances.length; i++) {
-            for (int j = 0; j < balances[i].length;j++) {
+            for (int j = 0; j < balances[i].length; j++) {
                 double oldBalance = balances[i - 1][j];
 
                 double interest = oldBalance * interestRate[j];
@@ -35,9 +36,9 @@ public class CompoundInterest {
 
         System.out.println();
         for (double[] row : balances) {
-            for (double b : row)
+            for (double b : row) {
                 System.out.printf("%10.2f", b);
-
+            }
             System.out.println();
         }
     }

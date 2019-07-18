@@ -1,4 +1,4 @@
-package ru.job4j.Loop;
+package ru.job4j.loop;
 
 /**
  * Чудо шахматная доска построенная в псевдографике.

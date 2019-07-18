@@ -19,7 +19,7 @@ public class Calculator {
      * @param second value
      * @return first minus second
      */
-    public double subtract(double first, double second){
+    public double subtract(double first, double second) {
         return first - second;
     }
     /**
@@ -27,7 +27,7 @@ public class Calculator {
      * @param second value
      * @return first div second
      */
-    public double div(double first, double second){
+    public double div(double first, double second) {
         return first / second;
     }
     /**
@@ -35,7 +35,7 @@ public class Calculator {
      * @param second value
      * @return first multiply second
      */
-    public double multiply(double first, double second){
+    public double multiply(double first, double second) {
         return first * second;
     }
 }

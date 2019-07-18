@@ -14,7 +14,7 @@ public class Triangle {
      * @return полумериметр.
      */
     public double period(double a, double b, double c) {
-        return (a +b + c) / 2;
+        return (a + b + c) / 2;
     }
 
     /**

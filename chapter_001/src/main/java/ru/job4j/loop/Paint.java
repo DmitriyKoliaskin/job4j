@@ -1,4 +1,4 @@
-package ru.job4j.Loop;
+package ru.job4j.loop;
 
 import java.util.function.BiPredicate;
 
@@ -13,7 +13,7 @@ public class Paint {
        return this.loopyBy(
                height,
                height,
-               (row, column) -> row >=column
+               (row, column) -> row >= column
        );
     }
     public String leftTrl(int height) {

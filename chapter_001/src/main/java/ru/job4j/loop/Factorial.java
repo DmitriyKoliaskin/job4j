@@ -1,4 +1,4 @@
-package ru.job4j.Loop;
+package ru.job4j.loop;
 
 public class Factorial {
     public int calc(int n) {

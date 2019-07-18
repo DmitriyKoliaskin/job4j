@@ -1,4 +1,4 @@
-package ru.job4j.Loop;
+package ru.job4j.loop;
 
 import org.junit.Test;
 import java.util.StringJoiner;
@@ -34,7 +34,7 @@ public class PaintTest {
         System.out.println(rst);
         assertThat(rst,
                 is(
-                        new StringJoiner(System.lineSeparator(),"", System.lineSeparator())
+                        new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                                 .add("   ^")
                                 .add("  ^^")
                                 .add(" ^^^")
@@ -50,7 +50,7 @@ public class PaintTest {
         System.out.println(rst);
         assertThat(rst,
                 is(
-                        new StringJoiner(System.lineSeparator(),"", System.lineSeparator())
+                        new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                                 .add("   ^   ")
                                 .add("  ^^^  ")
                                 .add(" ^^^^^ ")
