@@ -5,7 +5,7 @@ package ru.job4j.loop;
         import static org.junit.Assert.assertThat;
 
 /**
- * @author Dmitriy Kolaiskin (Hipf02@yandex.ru)
+ * @author Dmitriy Koliaskin (Hipf02@yandex.ru)
  * @version $Id$
  * @since 0.1
  */
@@ -26,7 +26,7 @@ public class BoardTest {
         String rsl = board.paint(5, 4);
         String ln = System.lineSeparator();
         assertThat(rsl, is(
-                String.format("X X %s X X%sX X %s X X%sX X %s", ln, ln, ln, ln, ln)
+                String.format("X X X%s X X %sX X X%s X X %s", ln, ln, ln, ln)
                 )
         );
     }
