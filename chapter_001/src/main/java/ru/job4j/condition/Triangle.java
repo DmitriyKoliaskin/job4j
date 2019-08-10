@@ -5,7 +5,6 @@ package ru.job4j.condition;
  * @version 0.1
  */
 public class Triangle {
-
     /**
      * Получаем полупериметр треугольника.
      * @param a сторона.
@@ -16,7 +15,6 @@ public class Triangle {
     public double period(double a, double b, double c) {
         return (a + b + c) / 2;
     }
-
     /**
      * Проверка для построения треугольника
      * @param a сторона.
@@ -26,7 +24,6 @@ public class Triangle {
     private boolean exist(double a, double c, double b) {
         return (a < b + c) && (b < a + c) && (c < b + a);
     }
-
     /**
      * Вычисляем площадь треугольника.
      * @param x1 координата.

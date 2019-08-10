@@ -60,12 +60,12 @@ public class Puzzle extends Application {
         rect.setOnMouseReleased(
                 event -> {
                     if (logic.move(this.extract(momento.getX(), momento.getY()), this.extract(event.getX(), event.getY()))) {
-                        rect.setX(((int) event.getX() / 40) * 40 + 5);
-                        rect.setY(((int) event.getY() / 40) * 40 + 5);
+                        rect.setX(((int) event.getX() / 160) * 160 + 0);
+                        rect.setY(((int) event.getY() / 160) * 160 + 0);
                         checkWinner();
                     } else {
-                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
-                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
+                        rect.setX(((int) momento.getX() / 160) * 160 + 0);
+                        rect.setY(((int) momento.getY() / 160) * 160 + 0);
                     }
                 }
         );
@@ -87,7 +87,7 @@ public class Puzzle extends Application {
         for (int y = 0; y != this.size; y++) {
             for (int x = 0; x != this.size; x++) {
                 panel.getChildren().add(
-                        this.buildRectangle(x, y, 40)
+                        this.buildRectangle(x, y, 160)
                 );
             }
         }
@@ -98,7 +98,7 @@ public class Puzzle extends Application {
     public void start(Stage stage) {
         BorderPane border = new BorderPane();
         HBox control = new HBox();
-        control.setPrefHeight(40);
+        control.setPrefHeight(160);
         control.setSpacing(10.0);
         control.setAlignment(Pos.BASELINE_CENTER);
         Button start = new Button("Начать");
@@ -108,7 +108,7 @@ public class Puzzle extends Application {
         control.getChildren().addAll(start);
         border.setBottom(control);
         border.setCenter(this.buildGrid());
-        stage.setScene(new Scene(border, 400, 400));
+        stage.setScene(new Scene(border, 900, 900));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
         stage.show();
@@ -144,15 +144,15 @@ public class Puzzle extends Application {
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(
-                        position.x * 40 + 5,
-                        position.y * 40 + 5,
-                        30,
+                        position.x * 160 + 0,
+                        position.y * 160 + 0,
+                        160,
                         figure.icon()
                 )
         );
     }
 
     private Cell extract(double graphX, double graphY) {
-        return new Cell((int) graphX / 40, (int) graphY / 40);
+        return new Cell((int) graphX / 160, (int) graphY / 160);
     }
 }

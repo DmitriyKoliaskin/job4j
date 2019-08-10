@@ -8,7 +8,6 @@ public class Size {
     public void info(int size) {
         System.out.println("Your size is : " + size);
     }
-
     public static void main(String[] args) {
         Size size = new Size();
         int nike = 10;
