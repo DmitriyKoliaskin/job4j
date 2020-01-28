@@ -17,6 +17,7 @@ public class Tracker {
 
     /**
      * Метод добавления зафки в хранилище
+     *
      * @param item новая заявка
      */
 
@@ -29,6 +30,7 @@ public class Tracker {
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для индефикации нам нужен уникальный ключ.
+     *
      * @return Уникальный ключ.
      */
     private String generateId() {
@@ -38,6 +40,7 @@ public class Tracker {
 
     /**
      * Метод findAll возвращает копию массива this.items без null элементов
+     *
      * @return Массив без null елементов.
      */
     public Item[] findAll() {
@@ -54,6 +57,7 @@ public class Tracker {
 
     /**
      * Метод findByName проверяет в цикле все элементы массива this.items, сравнивая name c key. Все совпадающие элементы собирает в массив.
+     *
      * @param key name, которое ищем среди массива объектов.
      * @return Массив, в который записаны все элементы с name key.
      */
@@ -71,29 +75,44 @@ public class Tracker {
 
     /**
      * Метод findById проверяет в цикле все элементы массива this.items, сравнивая id c id. И выдает этот элемент.
-     * @return Элемент, id которого совпадает с тем который мы ищем.
+     *
      * @param id, которое ищем среди массива объектов.
+     * @return Элемент, id которого совпадает с тем который мы ищем.
      */
     public Item findById(String id) {
         return items[indexOf(id)];
     }
 
     private int indexOf(String id) {
-        int rsl = -1;
+        int rsl = 0;
         for (int index = 0; index < position; index++) {
             if (items[index].getId().equals(id)) {
                 rsl = index;
                 break;
             }
         }
-     return rsl;
+        return rsl;
     }
-
 
     public Item replace(String id, Item item) {
         int index = indexOf(id);
         item.setId(items[index].getId());
         this.items[index] = item;
         return item;
+    }
+
+
+    public void delete(String id) {
+        int distPos = indexOf(id);
+        if (distPos != -1) {
+            int start = indexOf(id) + 1;
+            int size = position - indexOf(id);
+            System.arraycopy(items, start, items, distPos, size);
+            items[position] = null;
+            position--;
+            System.out.println("Delete complete");
+        } else {
+            System.out.println("Deleting is not possible");
+        }
     }
 }
