@@ -38,21 +38,8 @@ public class Tracker {
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
-    /**
-     * Метод findAll возвращает копию массива this.items без null элементов
-     *
-     * @return Массив без null елементов.
-     */
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[position];
-        int size = 0;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getName() != null) {
-                itemsWithoutNull[size++] = items[index];
-            }
-        }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, position);
     }
 
     /**
