@@ -70,18 +70,30 @@ public class Tracker {
     }
 
     /**
-     * Метод findById проверяет в цикле все элементы массива this.items, сравнивая id c key. И выдает этот элемент.
+     * Метод findById проверяет в цикле все элементы массива this.items, сравнивая id c id. И выдает этот элемент.
      * @return Элемент, id которого совпадает с тем который мы ищем.
-     * @param key id, которое ищем среди массива объектов.
+     * @param id, которое ищем среди массива объектов.
      */
-    public Item findById(String key) {
-        Item result = null;
+    public Item findById(String id) {
+        return items[indexOf(id)];
+    }
+
+    private int indexOf(String id) {
+        int rsl = -1;
         for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(key)) {
-                result = items[index];
+            if (items[index].getId().equals(id)) {
+                rsl = index;
                 break;
             }
         }
-        return result;
+     return rsl;
+    }
+
+
+    public Item replace(String id, Item item) {
+        int index = indexOf(id);
+        item.setId(items[index].getId());
+        this.items[index] = item;
+        return item;
     }
 }
