@@ -52,7 +52,7 @@ public class Tracker {
         Item[] itemsWithSameName = new Item[position];
         int size = 0;
         for (int index = 0; index < position; index++) {
-            if (items[index].getName() != null && items[index].getName().equals(key)) {
+            if (items[index].getName().equals(key)) {
                 itemsWithSameName[size++] = items[index];
             }
         }
