@@ -67,11 +67,16 @@ public class Tracker {
      * @return Элемент, id которого совпадает с тем который мы ищем.
      */
     public Item findById(String id) {
-        return items[indexOf(id)];
+        Item result = null;
+        int index = indexOf(id);
+        if (index != -1) {
+            result = items[index];
+        }
+        return result;
     }
 
     private int indexOf(String id) {
-        int rsl = 0;
+        int rsl = -1;
         for (int index = 0; index < position; index++) {
             if (items[index].getId().equals(id)) {
                 rsl = index;
@@ -81,25 +86,26 @@ public class Tracker {
         return rsl;
     }
 
-    public Item replace(String id, Item item) {
+    public void replace(String id, Item item) {
         int index = indexOf(id);
-        item.setId(items[index].getId());
-        this.items[index] = item;
-        return item;
+        if (index != -1) {
+            item.setId(items[index].getId());
+            items[index] = item;
+        }
     }
 
 
     public void delete(String id) {
         int distPos = indexOf(id);
         if (distPos != -1) {
-            int start = indexOf(id) + 1;
-            int size = position - indexOf(id);
+            int start = distPos + 1;
+            int size = position - distPos;
             System.arraycopy(items, start, items, distPos, size);
             items[position] = null;
             position--;
-            System.out.println("Delete complete");
+            System.out.println("Item deleted");
         } else {
-            System.out.println("Deleting is not possible");
+            System.out.println("Invalid item id");
         }
     }
 }
