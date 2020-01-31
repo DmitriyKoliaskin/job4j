@@ -86,16 +86,20 @@ public class Tracker {
         return rsl;
     }
 
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {
             item.setId(items[index].getId());
             items[index] = item;
+            return true;
         }
+        return rsl;
     }
 
 
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean rsl = false;
         int distPos = indexOf(id);
         if (distPos != -1) {
             int start = distPos + 1;
@@ -104,8 +108,10 @@ public class Tracker {
             items[position] = null;
             position--;
             System.out.println("Item deleted");
+            return true;
         } else {
             System.out.println("Invalid item id");
         }
+        return rsl;
     }
 }

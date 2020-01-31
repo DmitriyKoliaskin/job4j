@@ -31,48 +31,34 @@ public class StartUI {
     }
 
     public void editItem() {
-        boolean run = true;
-        while (run) {
             System.out.println("=== Edit item===");
             System.out.println("Enter Id: ");
             String id = scanner.nextLine();
-            Item result = tracker.findById(id);
-            if (result != null) {
-                System.out.println("Enter new name: ");
-                String newName = scanner.nextLine();
-                Item item = new Item(newName);
-                tracker.replace(id, item);
-                System.out.println("The changes were made successfully.");
+            System.out.println("Enter new name: ");
+            String newName = scanner.nextLine();
+            Item item = new Item(newName);
+            boolean result = tracker.replace(id, item);
+            if (result) {
+                System.out.println("Item " + id + " changed.");
                 System.out.println();
-                run = false;
             } else {
-                System.out.println("Try again");
-                System.out.println();
+                System.out.println("Item :" + id + " not found.");
             }
-        }
     }
 
     public void deleteItem() {
-        boolean run = true;
-        while (run) {
             System.out.println("=== Edit item===");
             System.out.println("Enter Id: ");
             String id = scanner.nextLine();
-            Item result = tracker.findById(id);
-            if (result != null) {
-                tracker.delete(id);
-                System.out.println();
-                run = false;
-            } else {
+            boolean result = tracker.delete(id);
+            if (!result) {
                 System.out.println("Deletion not executed, Try again.");
                 System.out.println();
             }
-        }
+
     }
 
     public void findItemId() {
-        boolean run = true;
-        while (run) {
             System.out.println("=== Find item by Id===");
             System.out.println("Enter Id: ");
             String id = scanner.nextLine();
@@ -81,17 +67,14 @@ public class StartUI {
                 System.out.println("Id: " + tracker.findById(id).getId() + " " + " Name: " +
                         tracker.findById(id).getName());
                 System.out.println();
-                run = false;
+
             } else {
                 System.out.println("Item not found, Try again.");
                 System.out.println();
             }
-        }
     }
 
     public void findItemName() {
-        boolean run = true;
-        while (run) {
             System.out.println("=== Find item by name===");
             System.out.println("Enter name: ");
             String name = scanner.nextLine();
@@ -101,12 +84,10 @@ public class StartUI {
                     System.out.println("Id: " + item.getId() + " Name: " + item.getName());
                     System.out.println();
                 }
-                run = false;
             } else {
                 System.out.println("Item not found, Try again.");
                 System.out.println();
             }
-        }
     }
 
     public void exitProgram() {
