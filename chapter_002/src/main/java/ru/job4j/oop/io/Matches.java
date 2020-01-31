@@ -8,7 +8,7 @@ public class Matches {
 
     public void startGame() {
         boolean run = true;
-        a: while (run) {
+        while (run) {
             System.out.println("11 !Одинадцать! 11");
             System.out.println("1. Начать игру.");
             System.out.println("2. Выйти.");
@@ -21,7 +21,6 @@ public class Matches {
                 runGame();
             } else {
                 System.out.println("Попробуйте еще раз!.");
-                continue a;
             }
         }
     }
