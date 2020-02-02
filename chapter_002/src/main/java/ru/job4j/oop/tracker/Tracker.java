@@ -107,10 +107,7 @@ public class Tracker {
             System.arraycopy(items, start, items, distPos, size);
             items[position] = null;
             position--;
-            System.out.println("Item deleted");
             return true;
-        } else {
-            System.out.println("Invalid item id");
         }
         return rsl;
     }
