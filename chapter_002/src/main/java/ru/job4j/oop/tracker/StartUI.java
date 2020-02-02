@@ -51,8 +51,7 @@ public class StartUI {
             String id = input.askStr("Enter Id: ");
             Item result = tracker.findById(id);
             if (result != null) {
-                System.out.println("Id: " + tracker.findById(id).getId() + " " + " Name: " +
-                        tracker.findById(id).getName());
+                System.out.println("Id: " + tracker.findById(id).getId() + " " + " Name: " + tracker.findById(id).getName());
                 System.out.println();
 
             } else {
@@ -110,7 +109,7 @@ public class StartUI {
         }
     }
 
-        private void showMenu () {
+        private void showMenu() {
             System.out.println("Menu:");
             System.out.println();
             System.out.println("0. Add new item.");
@@ -122,7 +121,7 @@ public class StartUI {
             System.out.println("6. Exit Program.");
         }
 
-    public static void main (String[]args) {
+    public static void main(String[]args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         new StartUI().init(input, tracker);

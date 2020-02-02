@@ -37,7 +37,7 @@ public class Matches {
         System.out.println();
     }
 
-    public int takeGame ( int match, int player) {
+    public int takeGame(int match, int player) {
     System.out.println("На столе сейчас " + match + " спичек.");
     System.out.println("Игрок " + player + " выбирите от 1 до 3 спичек.");
     int takeGame;
@@ -49,7 +49,7 @@ public class Matches {
         } while (takeGame > 3 || takeGame < 1 || takeGame > match);
         return takeGame;
             }
-    public static void main (String[]args) {
+    public static void main(String[]args) {
         Matches matches = new Matches();
         matches.startGame();
     }

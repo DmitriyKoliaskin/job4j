@@ -2,7 +2,7 @@ package ru.job4j.oop.tracker;
 
 public class StubInput implements Input {
 
-    private String [] answer;
+    private String[] answer;
     private int position = 0;
 
     public StubInput(String[] answer) {
