@@ -11,8 +11,8 @@ public class TriangleTestTwo {
     public void trianglTest() {
         Triangle tri = new Triangle();
         assertThat(tri.draw(), is(new StringBuilder()
-                .append("  *  ")
-                .append(" * * ")
+                .append("  *  /n")
+                .append(" * * /n")
                 .append("*****")
                 .toString()));
     }

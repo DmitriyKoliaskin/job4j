@@ -12,9 +12,9 @@ public class SquareTest {
     public void squareTesting() {
         Square square = new Square();
         assertThat(square.draw(), is(new StringBuilder()
-                .append("+ + + +")
-                .append("+     +")
-                .append("+     +")
+                .append("+ + + +/n")
+                .append("+     +/n")
+                .append("+     +/n")
                 .append("+ + + +")
                 .toString()));
     }
