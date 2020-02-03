@@ -5,7 +5,7 @@ public class Fact {
 
     }
 
-    public int calc(int n) {
+    public static int calc(int n) {
         if (n < 1) {
             throw new IllegalArgumentException("variable n must not be less than 1");
         }
