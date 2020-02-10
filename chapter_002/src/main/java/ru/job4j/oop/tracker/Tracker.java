@@ -1,5 +1,6 @@
 package ru.job4j.oop.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -7,7 +8,7 @@ public class Tracker {
     /**
      * Массив хранения заявок.
      */
-    private final Item[] items = new Item[100];
+    private final ArrayList<Item> items = new ArrayList<>();
 
     /**
      * Указать ячейки для новой заявки.
@@ -23,7 +24,7 @@ public class Tracker {
 
     public Item add(Item item) {
         item.setId(this.generateId());
-        items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
@@ -38,8 +39,8 @@ public class Tracker {
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    public ArrayList<Item> findAll() {
+        return this.items;
     }
 
     /**
@@ -48,16 +49,14 @@ public class Tracker {
      * @param key name, которое ищем среди массива объектов.
      * @return Массив, в который записаны все элементы с name key.
      */
-    public Item[] findByName(String key) {
-        Item[] itemsWithSameName = new Item[position];
-        int size = 0;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getName().equals(key)) {
-                itemsWithSameName[size++] = items[index];
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> result = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getName().equals(key)) {
+                result.add(item);
             }
         }
-        itemsWithSameName = Arrays.copyOf(itemsWithSameName, size);
-        return itemsWithSameName;
+        return result;
     }
 
     /**
@@ -70,15 +69,15 @@ public class Tracker {
         Item result = null;
         int index = indexOf(id);
         if (index != -1) {
-            result = items[index];
+            result = items.get(index);
         }
         return result;
     }
 
     private int indexOf(String id) {
         int rsl = -1;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
+        for (int index = 0; index < this.items.size(); index++) {
+            if (items.get(index).getId().equals(id)) {
                 rsl = index;
                 break;
             }
@@ -90,8 +89,8 @@ public class Tracker {
         boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {
-            item.setId(items[index].getId());
-            items[index] = item;
+            item.setId(items.get(index).getId());
+            items.set(index, item);
             return true;
         }
         return rsl;
@@ -102,11 +101,7 @@ public class Tracker {
         boolean rsl = false;
         int distPos = indexOf(id);
         if (distPos != -1) {
-            int start = distPos + 1;
-            int size = position - distPos;
-            System.arraycopy(items, start, items, distPos, size);
-            items[position] = null;
-            position--;
+            this.items.remove(distPos);
             return true;
         }
         return rsl;

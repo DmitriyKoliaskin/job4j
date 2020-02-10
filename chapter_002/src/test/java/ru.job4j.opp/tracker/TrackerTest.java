@@ -5,6 +5,8 @@ import org.junit.Test;
 import ru.job4j.oop.tracker.Item;
 import ru.job4j.oop.tracker.Tracker;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,8 +17,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
         tracker.add(item);
-        Item result = tracker.findById(item.getId());
-        assertThat(result.getName(), is(item.getName()));
+        ArrayList<Item> result = tracker.findByName(item.getName());
+        assertThat(result.get(0).getName(), is(item.getName()));
     }
     @Test
     public void checkHowFindAllWork() {
@@ -29,8 +31,8 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item2);
         tracker.add(item1);
-        Item[] expect = new Item[] {item1, item2, item3, item2, item1};
-        assertThat(tracker.findAll(), is(expect));
+        ArrayList<Item> exp = tracker.findAll();
+        assertThat(exp.size(), is(5));
     }
 
     @Test
@@ -42,10 +44,9 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        tracker.add(item2);
-        tracker.add(item1);
-        Item[] expect = new Item[] {item1, item1};
-        assertThat(tracker.findByName("test1"), is(expect));
+        ArrayList<Item> expect = new ArrayList<>();
+        expect.add(item2);
+        assertThat(tracker.findByName("test2"), is(expect));
     }
 
     @Test
