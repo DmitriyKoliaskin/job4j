@@ -1,14 +1,14 @@
 package ru.job4j.oop.tracker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
-public class Tracker {
+public class Tracker implements Items {
     /**
      * Массив хранения заявок.
      */
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
 
     /**
      * Указать ячейки для новой заявки.
@@ -40,7 +40,7 @@ public class Tracker {
     }
 
     public ArrayList<Item> findAll() {
-        return this.items;
+        return (ArrayList<Item>) this.items;
     }
 
     /**
