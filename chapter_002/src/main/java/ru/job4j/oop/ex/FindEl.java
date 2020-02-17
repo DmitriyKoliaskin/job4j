@@ -43,7 +43,7 @@ public class FindEl {
     public static void main(String[] args) {
         String[] value = {"Dima", "Ivan", "Kapacb"};
         try {
-            indexOf(value ,"Pasha");
+            indexOf(value, "Pasha");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }

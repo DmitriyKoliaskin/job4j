@@ -39,7 +39,7 @@ public class JobTest {
         Comparator<Job> cmpName = new JobDecsByName();
         int rsl = cmpName.compare(
                 new Job("Impl task", 0),
-                new Job("Bug" , 7)
+                new Job("Bug", 7)
         );
         assertThat(rsl, lessThan(0));
     }
@@ -48,7 +48,7 @@ public class JobTest {
     public void whenIncByName() {
         Comparator<Job> cmpName = new JobIncByName();
         int rsl = cmpName.compare(
-                new Job("Bug" , 7),
+                new Job("Bug", 7),
                 new Job("Impl task", 0)
         );
         assertThat(rsl, lessThan(0));

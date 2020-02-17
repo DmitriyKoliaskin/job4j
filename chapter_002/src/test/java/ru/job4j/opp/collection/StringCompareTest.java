@@ -16,7 +16,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenStringAreaEqualsThenZero () {
+    public void whenStringAreaEqualsThenZero() {
         assertThat(comparison(
                 "Ivanov",
                 "Ivanov"
@@ -24,7 +24,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenLeftLessThanRightResultShouldBePositive () {
+    public void whenLeftLessThanRightResultShouldBePositive() {
         assertThat(comparison(
                 "Ivanov",
                 "Ivanova"
@@ -32,7 +32,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenLeftGreaterThanRightResultShouldBePositive () {
+    public void whenLeftGreaterThanRightResultShouldBePositive() {
         assertThat(comparison(
                 "Petrov",
                 "Ivanova"
@@ -40,7 +40,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void secondCharOfLeftGreaterThanRightShouldBePositive () {
+    public void secondCharOfLeftGreaterThanRightShouldBePositive() {
         assertThat(comparison(
                 "Petrov",
                 "Patrov"
@@ -48,7 +48,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void secondCharOfLeftLessThanRightShouldBeNegative () {
+    public void secondCharOfLeftLessThanRightShouldBeNegative() {
         assertThat(comparison(
                 "Patrova",
                 "Petrov"
@@ -56,7 +56,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenLeftLessThanRightResultShouldBeNegative () {
+    public void whenLeftLessThanRightResultShouldBeNegative() {
         assertThat(comparison(
                 "Ivanova",
                 "Ivanov"

@@ -15,7 +15,7 @@ public class ArrayDuplicateTest {
      * Тест.
      */
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
-        String[] input = {"Привет", "Мир","Ты", "Привет", "Супер", "МалиновыйПирожок", "Мир"};
+        String[] input = {"Привет", "Мир", "Ты", "Привет", "Супер", "МалиновыйПирожок", "Мир"};
         String[] except = {"Привет", "Мир", "Ты", "Супер", "МалиновыйПирожок"};
         ArrayDuplicate duplicate = new ArrayDuplicate();
         String[] result = duplicate.removeDuplicatesValue(input);

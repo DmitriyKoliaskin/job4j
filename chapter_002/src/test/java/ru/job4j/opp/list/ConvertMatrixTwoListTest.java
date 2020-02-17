@@ -1,7 +1,7 @@
 package ru.job4j.opp.list;
 
 import org.junit.Test;
-import ru.job4j.oop.List.ConvertMatrix2List;
+import ru.job4j.oop.list.ConvertMatrixTwoList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class ConvertMatrix2ListTest {
+public class ConvertMatrixTwoListTest {
     @Test
     public void when2on2ArrayThenList4() {
-        ConvertMatrix2List list = new ConvertMatrix2List();
+        ConvertMatrixTwoList list = new ConvertMatrixTwoList();
         int[][] input = {
                 {1, 2},
                 {3, 4}

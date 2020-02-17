@@ -26,7 +26,7 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("3124", 1000));
-        assertThat(bank.findByRequisite("3311","3124").getBalance(), is(1000.0));
+        assertThat(bank.findByRequisite("3311", "3124").getBalance(), is(1000.0));
     }
 
     @Test

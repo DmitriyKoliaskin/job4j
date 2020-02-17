@@ -35,7 +35,7 @@ public class SortItemTest {
     @Test
     public void whenCompareThenRise() {
         this.setID();
-        Collections.sort(list,new SortItemIncrease());
+        Collections.sort(list, new SortItemIncrease());
         assertThat(list, is(List.of(item1, item2, item3)));
     }
 }
