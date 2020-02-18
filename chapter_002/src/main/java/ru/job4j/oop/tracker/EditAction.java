@@ -1,5 +1,7 @@
 package ru.job4j.oop.tracker;
 
+import java.util.function.Consumer;
+
 public class EditAction implements UserAction {
     @Override
     public String name() {
@@ -7,7 +9,7 @@ public class EditAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String id = input.askStr("Enter id: ");
         String newName = input.askStr("Enter new name: ");
         Item item = new Item(newName);

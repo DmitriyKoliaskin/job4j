@@ -1,5 +1,7 @@
 package ru.job4j.oop.tracker;
 
+import java.util.function.Consumer;
+
 public class ValidateInput implements Input {
     private final Input input;
 
