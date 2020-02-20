@@ -18,20 +18,26 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FindAllActionTest {
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private final Consumer<String> output = s -> {};
     private final PrintStream stdout = new PrintStream(out);
+
+    private final Consumer<String> output = new Consumer<>() {
+        @Override
+        public void accept(String s) {
+        }
+    };
 
     @Before
     public void loadOutput() {
-        System.out.println("execute before method");
+        output.accept("execute before method");
         System.setOut(new PrintStream(this.out));
     }
 
     @After
     public void backOutput() {
         System.setOut(this.stdout);
-        System.out.println("execute after method");
+        output.accept("execute after method");
     }
 
     @Test

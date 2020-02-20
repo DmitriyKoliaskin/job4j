@@ -2,7 +2,6 @@ package ru.job4j.opp.tracker;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import ru.job4j.oop.tracker.*;
 
@@ -15,11 +14,15 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FindByNameActionTest {
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private final Consumer<String> output = s -> {
 
-    };
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream stdout = new PrintStream(out);
+
+    private final Consumer<String> output = new Consumer<>() {
+        @Override
+        public void accept(String s) {
+        }
+    };
 
     @Before
     public void loadOutput() {
