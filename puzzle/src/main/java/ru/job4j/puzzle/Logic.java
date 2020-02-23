@@ -29,13 +29,18 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            if (this.isFree(steps)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
+            for (Cell step : steps) {
+                if (this.findBy(step) != -1) {
+                    rst = false;
+                } else if (this.isFree(steps)) {
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
             }
         }
         return rst;
     }
+
 
     public boolean isFree(Cell ... cells) {
         boolean result = cells.length > 0;
