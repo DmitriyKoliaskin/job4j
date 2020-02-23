@@ -19,12 +19,13 @@ public class FindByNameActionTest {
     private final PrintStream stdout = new PrintStream(out);
 
     private final Consumer<String> output = new Consumer<>() {
+
         @Override
         public void accept(String s) {
         }
     };
 
-    @Before
+        @Before
     public void loadOutput() {
         output.accept("execute before method");
         System.setOut(new PrintStream(this.out));
