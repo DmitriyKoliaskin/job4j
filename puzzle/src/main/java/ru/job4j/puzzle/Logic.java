@@ -29,15 +29,11 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            for (Cell step : steps) {
-                if (this.findBy(step) != -1) {
-                    rst = false;
-                } else if (this.isFree(steps)) {
+             if (this.isFree(steps)) {
                     rst = true;
                     this.figures[index] = this.figures[index].copy(dest);
                 }
             }
-        }
         return rst;
     }
 
@@ -83,8 +79,8 @@ public class Logic {
                 }
                 if (col == table.length || row == table.length) {
                     result = true;
-                    break;
             }
+            break;
         }
         return result;
     }
