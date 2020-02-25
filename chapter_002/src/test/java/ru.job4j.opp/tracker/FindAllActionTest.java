@@ -22,23 +22,7 @@ public class FindAllActionTest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream stdout = new PrintStream(out);
 
-    private final Consumer<String> output = new Consumer<>() {
-        @Override
-        public void accept(String s) {
-        }
-    };
-
-    @Before
-    public void loadOutput() {
-        output.accept("execute before method");
-        System.setOut(new PrintStream(this.out));
-    }
-
-    @After
-    public void backOutput() {
-        System.setOut(this.stdout);
-        output.accept("execute after method");
-    }
+    private final Consumer<String> output = stdout::println;
 
     @Test
     public void whenCheckOutput() {
@@ -46,7 +30,7 @@ public class FindAllActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
-        act.execute(new StubInput(new String[] {}), tracker, System.out::println);
+        act.execute(new StubInput(new String[] {}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();

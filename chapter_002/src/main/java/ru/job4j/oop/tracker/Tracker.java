@@ -39,7 +39,7 @@ public class Tracker {
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         return (ArrayList<Item>) this.items;
     }
 
@@ -49,7 +49,7 @@ public class Tracker {
      * @param key name, которое ищем среди массива объектов.
      * @return Массив, в который записаны все элементы с name key.
      */
-    public ArrayList<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         ArrayList<Item> result = new ArrayList<>();
         for (Item item : this.items) {
             if (item.getName().equals(key)) {
