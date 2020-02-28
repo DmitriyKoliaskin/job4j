@@ -21,4 +21,12 @@ public class Attachment {
     public String toString() {
         return "{" + "name='" + name + '\'' + ", size=" + size + '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Attachment) {
+            return obj != null && this.getName().equals(((Attachment) obj).getName());
+        }
+        return false;
+    }
 }
