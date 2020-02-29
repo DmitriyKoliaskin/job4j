@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 public class School {
 
     public List<Student> collect(List<Student> students, Predicate<Student> predict) {
-        List<Student> list = students.stream().filter(predict).collect(Collectors.toList());
-        return list.stream().sorted().collect(Collectors.toList());
+        return students.stream().filter(predict).sorted().collect(Collectors.toList());
     }
-
 }
