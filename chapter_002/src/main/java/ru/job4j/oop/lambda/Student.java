@@ -5,8 +5,19 @@ import java.util.Objects;
 public class Student implements Comparable<Student> {
     private int score;
 
+    public String getSurname() {
+        return surname;
+    }
+
+    private String surname;
+
     public Student(int score) {
         this.score = score;
+    }
+
+    public Student(int score, String surname) {
+        this.score = score;
+        this.surname = surname;
     }
 
     public int getScore() {
