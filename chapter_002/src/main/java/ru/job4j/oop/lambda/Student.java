@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Student implements Comparable<Student> {
     private int score;
+    private String surname;
 
     public String getSurname() {
         return surname;
     }
 
-    private String surname;
 
     public Student(int score) {
         this.score = score;

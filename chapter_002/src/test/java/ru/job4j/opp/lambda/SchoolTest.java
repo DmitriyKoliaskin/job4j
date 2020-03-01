@@ -24,7 +24,7 @@ public class SchoolTest {
             new Student(75)
     );
 
-    private List<Student> studentSurname = Arrays.asList(
+    private List<Student> studentSurnameAndScore = Arrays.asList(
             new Student(100, "Kolobok"),
             new Student(89, "Lisa"),
             new Student(57, "Volk")
@@ -53,11 +53,18 @@ public class SchoolTest {
 
     @Test
     public void whenListToMap() {
-        Map<String, Student> result = school.listToMap(studentSurname);
+        Map<String, Student> result = school.listToMap(studentSurnameAndScore);
         Map<String, Student> expect = Map.of(
                 "Kolobok", new Student(100, "Kolobok"),
                 "Lisa", new Student(89, "Lisa"),
                 "Volk", new Student(57, "Volk"));
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenLevelOf() {
+        List<Student> result = school.levelOf(studentSurnameAndScore, 70);
+        List<Student> expect = List.of(new Student(89, "Lisa"), new Student(100, "Kolobok"));
         assertThat(result, is(expect));
     }
 }
