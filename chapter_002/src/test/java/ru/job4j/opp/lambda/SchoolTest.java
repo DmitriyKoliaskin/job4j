@@ -25,15 +25,17 @@ public class SchoolTest {
     );
 
     private List<Student> studentSurnameAndScore = Arrays.asList(
-            new Student(100, "Kolobok"),
-            new Student(89, "Lisa"),
-            new Student(57, "Volk")
+            new Student("Kolobok", 100),
+            new Student("Lisa", 89),
+            new Student("Volk", 57)
     );
 
     @Test
     public void whenStudentScoreRange0To50() {
         List<Student> result = school.collect(studentsScore, student -> student.getScore() > 0 && student.getScore() < 50);
-        List<Student> expect = List.of(new Student(10), new Student(34));
+        List<Student> expect = List.of(
+                new Student(10),
+                new Student(34));
         assertThat(result, is(expect));
     }
 
@@ -47,7 +49,11 @@ public class SchoolTest {
     @Test
     public void whenStudentScoreRange70To100() {
         List<Student> result = school.collect(studentsScore, student -> student.getScore() >= 70 && student.getScore() <= 100);
-        List<Student> expect = List.of(new Student(75), new Student(89), new Student(90), new Student(100));
+        List<Student> expect = List.of(
+                new Student(75),
+                new Student(89),
+                new Student(90),
+                new Student(100));
         assertThat(result, is(expect));
     }
 
@@ -55,16 +61,19 @@ public class SchoolTest {
     public void whenListToMap() {
         Map<String, Student> result = school.listToMap(studentSurnameAndScore);
         Map<String, Student> expect = Map.of(
-                "Kolobok", new Student(100, "Kolobok"),
-                "Lisa", new Student(89, "Lisa"),
-                "Volk", new Student(57, "Volk"));
+                "Kolobok", new Student("Kolobok", 100),
+                "Lisa", new Student("Lisa", 89),
+                "Volk", new Student("Volk", 57));
         assertThat(result, is(expect));
     }
 
     @Test
     public void whenLevelOf() {
         List<Student> result = school.levelOf(studentSurnameAndScore, 70);
-        List<Student> expect = List.of(new Student(89, "Lisa"), new Student(100, "Kolobok"));
+        List<Student> expect = List.of(
+                new Student("Kolobok", 100),
+                new Student("Lisa", 89));
         assertThat(result, is(expect));
     }
+
 }

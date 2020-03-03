@@ -15,7 +15,7 @@ public class Student implements Comparable<Student> {
         this.score = score;
     }
 
-    public Student(int score, String surname) {
+    public Student(String surname, int score) {
         this.score = score;
         this.surname = surname;
     }
@@ -34,16 +34,16 @@ public class Student implements Comparable<Student> {
         }
 
         Student student = (Student) obj;
-        return score == student.score;
+        return Objects.equals(student.getScore(), getScore()) || Objects.equals(student.getSurname(), getSurname());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(score);
+        return Objects.hash(getSurname(), getScore());
     }
 
     @Override
     public int compareTo(Student student) {
-        return Integer.compare(score, student.score);
+        return Integer.compare(student.getScore(), getScore());
     }
 }
