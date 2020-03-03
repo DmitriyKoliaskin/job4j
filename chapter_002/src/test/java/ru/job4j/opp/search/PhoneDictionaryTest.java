@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(
                 new Person("Dmitriy", "Koliaskin", "124124", "Kapacevo")
         );
