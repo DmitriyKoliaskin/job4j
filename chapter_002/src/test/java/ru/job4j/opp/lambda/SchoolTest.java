@@ -14,7 +14,7 @@ import java.util.Map;
 public class SchoolTest {
 
     private School school = new School();
-    private List<Student> studentsScore = Arrays.asList(
+    private List<Student> studentsScore = List.of(
             new Student(100),
             new Student(89),
             new Student(57),
@@ -24,7 +24,7 @@ public class SchoolTest {
             new Student(75)
     );
 
-    private List<Student> studentSurnameAndScore = Arrays.asList(
+    private List<Student> studentSurnameAndScore = List.of(
             new Student("Kolobok", 100),
             new Student("Lisa", 89),
             new Student("Volk", 57)

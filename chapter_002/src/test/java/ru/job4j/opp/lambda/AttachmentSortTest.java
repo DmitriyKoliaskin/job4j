@@ -22,7 +22,7 @@ public class AttachmentSortTest {
     @Test
         public void attachmentSortByName() {
         List<Attachment> rst = new AttachmentSort().sortByName(attachments);
-        List<Attachment> result = Arrays.asList(
+        List<Attachment> result = List.of(
                 new Attachment("1", 100),
                 new Attachment("2", 34),
                 new Attachment("3", 13));
@@ -32,7 +32,7 @@ public class AttachmentSortTest {
     @Test
     public void attachmentSortBySize() {
         List<Attachment> rst = new AttachmentSort().sortBySize(attachments);
-        List<Attachment> result = Arrays.asList(
+        List<Attachment> result = List.of(
                 new Attachment("3", 13),
                 new Attachment("2", 34),
                 new Attachment("1", 100));

@@ -14,7 +14,7 @@ public class FunctionInDiapasonTest {
     public void whenLinearFunctionThenLinearResults() {
         FunctionInDiapason function = new FunctionInDiapason();
         List<Double> result = function.diapason(3, 6, x -> 2 * x + 1);
-        List<Double> expected = Arrays.asList(7D, 9D, 11D);
+        List<Double> expected = List.of(7D, 9D, 11D);
         assertThat(result, is(expected));
     }
 
@@ -22,7 +22,7 @@ public class FunctionInDiapasonTest {
     public void whenQuadraticFunction() {
         FunctionInDiapason function = new FunctionInDiapason();
         List<Double> result = function.diapason(3, 6, x -> Math.pow(x, 2));
-        List<Double> expected = Arrays.asList(9D, 16D, 25D);
+        List<Double> expected = List.of(9D, 16D, 25D);
         assertThat(result, is(expected));
     }
 

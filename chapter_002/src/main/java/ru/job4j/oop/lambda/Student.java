@@ -37,13 +37,13 @@ public class Student implements Comparable<Student> {
         return Objects.equals(student.getScore(), getScore()) || Objects.equals(student.getSurname(), getSurname());
     }
 
-    @Override
+/*    @Override
     public int hashCode() {
         return Objects.hash(getSurname(), getScore());
-    }
+    }*/
 
     @Override
     public int compareTo(Student student) {
-        return Integer.compare(student.getScore(), getScore());
+        return 0;
     }
 }

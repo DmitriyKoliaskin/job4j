@@ -5,7 +5,6 @@ import ru.job4j.oop.collection.DepDescComp;
 
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.greaterThan;
 
 public class DepDecsCompTest {
 

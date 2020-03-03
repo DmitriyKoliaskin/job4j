@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class ProfilesTest {
 
     private Profiles profile = new Profiles();
-    private List<Profile> list = Arrays.asList(
+    private List<Profile> list = List.of(
             new Profile(new Address("Minsk", "Proletarskaya", 43, 12)),
             new Profile(new Address("Serpuhov", "Mosvovskoe highway", 124, 25)),
             new Profile(new Address("Serpuhov", "Mosvovskoe highway", 124, 25)),
