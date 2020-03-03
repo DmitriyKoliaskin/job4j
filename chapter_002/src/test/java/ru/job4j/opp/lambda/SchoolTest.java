@@ -7,9 +7,9 @@ import ru.job4j.oop.lambda.Student;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SchoolTest {
 
@@ -28,6 +28,12 @@ public class SchoolTest {
             new Student("Kolobok", 100),
             new Student("Lisa", 89),
             new Student("Volk", 57)
+    );
+
+    private List<Student> studentSurnameUnits = List.of(
+            new Student("Lisa", Set.of("1.Как поймать колобка.", "2.Как уйти от всех.", "3.Как cъесть колобка.")),
+            new Student("Kolobok", Set.of("2.Как уйти от всех.")),
+            new Student("Volk", Set.of("2.Как уйти от всех.", "3.Как cъесть колобка."))
     );
 
     @Test
@@ -76,4 +82,14 @@ public class SchoolTest {
         assertThat(result, is(expect));
     }
 
+    @Test
+    public void whenSections() {
+        var result = school.sections(studentSurnameUnits);
+        var expect = Map.of(
+                "1.Как поймать колобка.", Set.of("Lisa"),
+                "2.Как уйти от всех.", Set.of("Kolobok", "Lisa", "Volk"),
+                "3.Как cъесть колобка.", Set.of("Lisa", "Volk")
+        );
+        assertThat(result, is(expect));
+    }
 }
