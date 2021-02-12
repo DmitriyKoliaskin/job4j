@@ -34,7 +34,7 @@ public class StartUI {
 
     public static void main(String[]args) {
         Input input = new ValidateInput(new ConsoleInput());
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction());
         actions.add(new FindAllAction());

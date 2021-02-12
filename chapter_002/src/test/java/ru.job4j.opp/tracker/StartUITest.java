@@ -7,10 +7,7 @@ import ru.job4j.oop.tracker.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.function.Consumer;
 
 import static org.hamcrest.Matchers.nullValue;
@@ -42,7 +39,7 @@ public class StartUITest {
     public void whenAddItem() {
         String[] answer = {"Fix PC"};
         Input input = new StubInput(answer);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         CreateAction createAction = new CreateAction();
         createAction.execute(input, tracker, output);
         Item created = tracker.findAll().get(0);
@@ -52,7 +49,7 @@ public class StartUITest {
 
     @Test
     public void whenReplaceItem() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item item  = new Item("New item");
         tracker.add(item);
         String[] answers = {
@@ -66,7 +63,7 @@ public class StartUITest {
 
     @Test
     public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item item = new Item("New item");
         tracker.add(item);
         String[] answers = {
@@ -86,7 +83,7 @@ public class StartUITest {
         StubAction action = new StubAction();
         ArrayList<UserAction> userActions = new ArrayList<>();
         userActions.add(action);
-        new StartUI(input, new Tracker(), System.out::println).init(new ArrayList<>(Arrays.asList(action)));
+        new StartUI(input, Tracker.getInstance(), System.out::println).init(new ArrayList<>(Collections.singletonList(action)));
         assertThat(action.isCall(), is(true));
     }
 
@@ -101,7 +98,7 @@ public class StartUITest {
         StubAction action = new StubAction();
         ArrayList<UserAction> userActions = new ArrayList<>();
         userActions.add(action);
-        new StartUI(input, new Tracker(), System.out::println).init(new ArrayList<>(Arrays.asList(action)));
+        new StartUI(input, Tracker.getInstance(), System.out::println).init(new ArrayList<>(Collections.singletonList(action)));
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")

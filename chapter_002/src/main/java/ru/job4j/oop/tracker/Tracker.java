@@ -4,7 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Tracker {
+public final class Tracker {
+
+    private static Tracker instance = null;
+
+    private Tracker() {
+    }
+
+    public static Tracker getInstance() {
+        if (instance == null) {
+            instance = new Tracker();
+        }
+        return instance;
+    }
+
     /**
      * Массив хранения заявок.
      */
@@ -40,7 +53,7 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return (ArrayList<Item>) this.items;
+        return this.items;
     }
 
     /**

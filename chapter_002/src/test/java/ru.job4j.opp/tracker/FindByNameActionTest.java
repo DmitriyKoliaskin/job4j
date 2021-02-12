@@ -18,11 +18,7 @@ public class FindByNameActionTest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream stdout = new PrintStream(out);
 
-    private final Consumer<String> output = new Consumer<>() {
-
-        @Override
-        public void accept(String s) {
-        }
+    private final Consumer<String> output = s -> {
     };
 
         @Before
@@ -39,7 +35,7 @@ public class FindByNameActionTest {
 
     @Test
     public void whenCheckOutput() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item item = new Item("fix bug");
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();

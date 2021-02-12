@@ -26,7 +26,7 @@ public class FindAllActionTest {
 
     @Test
     public void whenCheckOutput() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
