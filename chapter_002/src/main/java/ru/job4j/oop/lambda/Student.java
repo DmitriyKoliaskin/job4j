@@ -58,6 +58,6 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student student) {
-        return 0;
+        return this.score - student.score;
     }
 }
