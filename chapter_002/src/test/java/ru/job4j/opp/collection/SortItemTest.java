@@ -1,10 +1,9 @@
 package ru.job4j.opp.collection;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -14,28 +13,40 @@ import ru.job4j.oop.tracker.SortItemIncrease;
 
 public class SortItemTest {
 
-    Item item1 = new Item("Aeboy");
-    Item item2 = new Item("Kolobok");
-    Item item3 = new Item("Lisa");
+    public List<Item> createdListItem() {
+        Item item1 = new Item("Aeboy");
+        Item item2 = new Item("Kolobok");
+        Item item3 = new Item("Lisa");
 
-    List<Item> list = Arrays.asList(item2, item1, item3);
+        return Arrays.asList(item1, item2, item3);
+    }
 
-    public void setID() {
-        item1.setId("1");
-        item2.setId("2");
-        item3.setId("3");
+    public void setID(List<Item> list) {
+        list.get(0).setId("1");
+        list.get(1).setId("2");
+        list.get(2).setId("3");
+    }
+
+    public ArrayList<String> getName(List<Item> list) {
+        ArrayList<String> copy = new ArrayList<>();
+        for (Item item : list) {
+            copy.add(item.getName());
+        }
+        return copy;
     }
 
     @Test
     public void whenCompareThenDown() {
-        this.setID();
-        Collections.sort(list, new SortItemDecrease());
-        assertThat(list, is(List.of(item3, item2, item1)));
+        List<Item> list = createdListItem();
+        setID(list);
+        list.sort(new SortItemDecrease());
+        assertThat(getName(list), is(List.of("Lisa","Kolobok","Aeboy")));
     }
     @Test
     public void whenCompareThenRise() {
-        this.setID();
-        Collections.sort(list, new SortItemIncrease());
-        assertThat(list, is(List.of(item1, item2, item3)));
+        List<Item> list = createdListItem();
+        setID(list);
+        list.sort(new SortItemIncrease());
+        assertThat(getName(list), is(List.of("Aeboy", "Kolobok", "Lisa")));
     }
 }
