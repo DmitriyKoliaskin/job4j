@@ -27,26 +27,26 @@ public class SortItemTest {
         list.get(2).setId("3");
     }
 
-    public ArrayList<String> getName(List<Item> list) {
-        ArrayList<String> copy = new ArrayList<>();
-        for (Item item : list) {
-            copy.add(item.getName());
-        }
-        return copy;
-    }
-
     @Test
     public void whenCompareThenDown() {
         List<Item> list = createdListItem();
         setID(list);
         list.sort(new SortItemDecrease());
-        assertThat(getName(list), is(List.of("Lisa","Kolobok","Aeboy")));
+        ArrayList<String> copy = new ArrayList<>();
+        for (Item item : list) {
+            copy.add(item.getName());
+        }
+        assertThat(copy, is(List.of("Lisa","Kolobok","Aeboy")));
     }
     @Test
     public void whenCompareThenRise() {
         List<Item> list = createdListItem();
         setID(list);
         list.sort(new SortItemIncrease());
-        assertThat(getName(list), is(List.of("Aeboy", "Kolobok", "Lisa")));
+        ArrayList<String> copy = new ArrayList<>();
+        for (Item item : list) {
+            copy.add(item.getName());
+        }
+        assertThat(copy, is(List.of("Aeboy", "Kolobok", "Lisa")));
     }
 }
