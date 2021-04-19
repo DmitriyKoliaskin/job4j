@@ -1,6 +1,5 @@
 package ru.job4j.oop.collection;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public class User implements Comparable<User> {
     }
 
     @Override
-    public int compareTo(@NotNull User o) {
+    public int compareTo(User o) {
         int result;
         if (o.name != this.name) {
             result = this.name.compareTo(o.name);
