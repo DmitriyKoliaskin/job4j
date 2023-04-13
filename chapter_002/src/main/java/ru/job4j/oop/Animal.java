@@ -7,5 +7,6 @@ public class Animal {
         super();
         System.out.println("Имя класса: Animal");
         this.name = name;
+
     }
 }
