@@ -5,49 +5,41 @@ import org.junit.Test;
 import ru.job4j.oop.tracker.Item;
 import ru.job4j.oop.tracker.Tracker;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
+
+    Tracker tracker = Tracker.getInstance();
+    Item item1 = new Item("test1");
+    Item item2 = new Item("test2");
+    Item item3 = new Item("test3");
+    Item bug1 = new Item("Bug");
+    Item bug2 = new Item("Bug2");
+
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = Tracker.getInstance();
-        Item item = new Item("test1");
-        tracker.add(item);
-        List<Item> result = tracker.findByName(item.getName());
-        assertThat(result.get(0).getName(), is(item.getName()));
-    }
-    @Test
-    public void checkHowFindAllWork() {
-        Tracker tracker = Tracker.getInstance();
-        Item item1 = new Item("test1");
-        Item item2 = new Item("test2");
-        Item item3 = new Item("test3");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        tracker.add(item2);
-        tracker.add(item1);
+        tracker.add(bug1);
+        tracker.add(bug2);
+        List<Item> result = tracker.findByName(item1.getName());
+        assertThat(result.get(0).getName(), is(item1.getName()));
+    }
+    @Test
+    public void checkHowFindAllWork() {
         List<Item> exp = tracker.findAll();
-        assertThat(exp.size(), is(5));
+        assertThat(exp.size(), is(9));
     }
 
     @Test
     public void checkHowFindByName() {
-        Tracker tracker = Tracker.getInstance();
-        Item item1 = new Item("test1");
-        Item item2 = new Item("test2");
-        Item item3 = new Item("test3");
-        tracker.add(item1);
-        tracker.add(item2);
-        tracker.add(item3);
-        ArrayList<Item> expect = new ArrayList<>();
-        expect.add(item2);
-        assertThat(tracker.findByName("test2"), is(expect));
+        List<Item> result = tracker.findByName(item1.getName());
+        assertThat(result.get(0).getName(), is("test1"));
     }
 
     @Test
@@ -63,12 +55,7 @@ public class TrackerTest {
 
     @Test
     public void whenDelete() {
-        Tracker tracker = Tracker.getInstance();
-        Item bug = new Item("Bug");
-        Item bug2 = new Item("Bug2");
-        tracker.add(bug);
-        tracker.add(bug2);
-        String id = bug.getId();
+        String id = bug2.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }

@@ -1,9 +1,11 @@
 package ru.job4j.opp.tracker;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.oop.tracker.*;
+
+import ru.job4j.oop.tracker.FindByNameAction;
+import ru.job4j.oop.tracker.Item;
+import ru.job4j.oop.tracker.StubInput;
+import ru.job4j.oop.tracker.Tracker;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -17,33 +19,19 @@ public class FindByNameActionTest {
 
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream stdout = new PrintStream(out);
-
-    private final Consumer<String> output = s -> {
-    };
-
-        @Before
-    public void loadOutput() {
-        output.accept("execute before method");
-        System.setOut(new PrintStream(this.out));
-    }
-
-    @After
-    public void backOutput() {
-        System.setOut(this.stdout);
-        output.accept("execute after method");
-    }
+    private final Consumer<String> output = stdout::println;
 
     @Test
     public void whenCheckOutput() {
-        Tracker tracker = Tracker.getInstance();
+       Tracker tracker = Tracker.getInstance();
         Item item = new Item("fix bug");
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();
-        act.execute(new StubInput(new String[] {item.getName()}), tracker, System.out::println);
+        act.execute(new StubInput(new String[] {item.getName()}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(stdout);
+        assertThat(out.toString(), is(expect));
+        //System.setOut(stdout);
     }
 }

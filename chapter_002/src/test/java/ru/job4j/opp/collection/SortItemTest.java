@@ -36,7 +36,7 @@ public class SortItemTest {
         for (Item item : list) {
             copy.add(item.getName());
         }
-        assertThat(copy, is(List.of("Lisa","Kolobok","Aeboy")));
+        assertThat(copy, is(List.of("Lisa", "Kolobok", "Aeboy")));
     }
     @Test
     public void whenCompareThenRise() {

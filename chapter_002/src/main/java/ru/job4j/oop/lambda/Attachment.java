@@ -1,5 +1,7 @@
 package ru.job4j.oop.lambda;
 
+import java.util.Objects;
+
 public class Attachment {
     private String name;
     private int size;
@@ -28,5 +30,9 @@ public class Attachment {
             return obj != null && this.getName().equals(((Attachment) obj).getName());
         }
         return false;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, size);
     }
 }

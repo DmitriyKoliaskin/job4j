@@ -1,6 +1,8 @@
 package ru.job4j.opp.tracker;
 
+import org.hamcrest.core.Is;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.oop.tracker.*;
@@ -16,10 +18,10 @@ import static org.junit.Assert.*;
 
 public class StartUITest {
 
-    private final List<UserAction> userActions = new ArrayList<>();
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private final Consumer<String> output = s -> {};
     private final PrintStream stdout = new PrintStream(out);
+
+    private final Consumer<String> output = stdout::println;
 
 
 
@@ -37,14 +39,13 @@ public class StartUITest {
 
     @Test
     public void whenAddItem() {
-        String[] answer = {"Fix PC"};
+        String[] answer = {"fix bug!"};
         Input input = new StubInput(answer);
         Tracker tracker = Tracker.getInstance();
         CreateAction createAction = new CreateAction();
         createAction.execute(input, tracker, output);
         Item created = tracker.findAll().get(0);
-        Item expected = new Item("Fix PC");
-        assertThat(created.getName(), is(expected.getName()));
+        assertThat(created.getName(), is("fix bug!"));
     }
 
     @Test
@@ -81,8 +82,6 @@ public class StartUITest {
 
         );
         StubAction action = new StubAction();
-        ArrayList<UserAction> userActions = new ArrayList<>();
-        userActions.add(action);
         new StartUI(input, Tracker.getInstance(), System.out::println).init(new ArrayList<>(Collections.singletonList(action)));
         assertThat(action.isCall(), is(true));
     }
@@ -96,14 +95,12 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        ArrayList<UserAction> userActions = new ArrayList<>();
-        userActions.add(action);
         new StartUI(input, Tracker.getInstance(), System.out::println).init(new ArrayList<>(Collections.singletonList(action)));
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
                 .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
+        assertThat(out.toString(), is(expect));
         System.setOut(def);
     }
 }

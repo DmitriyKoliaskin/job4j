@@ -1,9 +1,7 @@
 package ru.job4j.opp.tracker;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+
 import ru.job4j.oop.tracker.FindAllAction;
 import ru.job4j.oop.tracker.Item;
 import ru.job4j.oop.tracker.StubInput;
@@ -21,20 +19,19 @@ public class FindAllActionTest {
 
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream stdout = new PrintStream(out);
-
     private final Consumer<String> output = stdout::println;
 
     @Test
     public void whenCheckOutput() {
         Tracker tracker = Tracker.getInstance();
-        Item item = new Item("fix bug");
+        Item item = new Item("fix bug!");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
         act.execute(new StubInput(new String[] {}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
+        assertThat(out.toString(), is(expect));
         System.setOut(stdout);
     }
 }

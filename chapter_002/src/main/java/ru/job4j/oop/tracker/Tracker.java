@@ -99,14 +99,15 @@ public final class Tracker {
     }
 
     public boolean replace(String id, Item item) {
-        boolean rsl = false;
-        int index = indexOf(id);
-        if (index != -1) {
-            item.setId(items.get(index).getId());
-            items.set(index, item);
-            return true;
+        boolean result = false;
+        item.setId(id);
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
+                this.items.set(i, item);
+                result = true;
+            }
         }
-        return rsl;
+        return result;
     }
 
 

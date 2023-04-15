@@ -57,6 +57,11 @@ public class Student implements Comparable<Student> {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(score, surname);
+    }
+
+    @Override
     public int compareTo(Student student) {
         return this.score - student.score;
     }
