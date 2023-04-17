@@ -22,23 +22,27 @@ public class UserTest {
         assertThat(it.next(), is(new User("Lisa", 25)));
     }
 
+    /**
+     * Lisa лексический больше позначению чем Kolobok.
+     */
     @Test
     public void whenCompareLisaVSKolobok() {
         int rsl = new User("Kolobok", 52)
                 .compareTo(
                         new User("Lisa", 25)
                 );
-        // Lisa лексический больше позначению чем Kolobok.
         assertThat(rsl, greaterThan(-2));
     }
 
+    /**
+     * Lisa по возрасту старше другой Lis'ы.
+     */
     @Test
     public void whenCompareLisaVSLisa() {
         int rsl = new User("Lisa", 52)
                 .compareTo(
                         new User("Lisa", 25)
                 );
-        // Lisa по возрасту старше другой Lis'ы.
         assertThat(rsl, greaterThan(0));
     }
 }

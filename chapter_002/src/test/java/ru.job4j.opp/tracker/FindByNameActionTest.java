@@ -32,6 +32,6 @@ public class FindByNameActionTest {
                 .add(item.getId() + " " + item.getName())
                 .toString();
         assertThat(out.toString(), is(expect));
-        //System.setOut(stdout);
+        System.setOut(stdout);
     }
 }
