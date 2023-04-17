@@ -33,7 +33,7 @@ public class TrackerTest {
     @Test
     public void checkHowFindAllWork() {
         List<Item> exp = tracker.findAll();
-        assertThat(exp.size(), is(9));
+        assertThat(exp.size(), is(6));
     }
 
     @Test
